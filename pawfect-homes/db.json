@@ -1,0 +1,50 @@
+{
+  "pets": [
+    {
+      "id": 1,
+      "name": "Buddy",
+      "species": "dog",
+      "breed": "Golden Retriever",
+      "age": 3,
+      "gender": "male",
+      "adoptionFee": 250,
+      "imageUrl": "https://wpcdn.web.wsu.edu/cahnrs/uploads/sites/4/cat2-1024x676.jpg",
+      "description": "Friendly and loves to play fetch",
+      "shelterId": 1,
+      "isAdopted": false
+    },
+    {
+      "id": 2,
+      "name": "Whiskers",
+      "species": "cat",
+      "breed": "Siamese",
+      "age": 2,
+      "gender": "female",
+      "adoptionFee": 150,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxeVKKhcw5BVb33-sIFbVwBxpGvFjAORNkHA&s",
+      "description": "Gentle and enjoys sunny spots",
+      "shelterId": 2,
+      "isAdopted": false
+    }
+  ],
+  "shelters": [
+    {
+      "id": 1,
+      "name": "Happy Paws Shelter",
+      "location": "New York"
+    },
+    {
+      "id": 2,
+      "name": "Safe Haven for Pets",
+      "location": "Los Angeles"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "favorites": [1]
+    }
+  ]
+}

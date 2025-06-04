@@ -1,24 +1,26 @@
-'use client'
+"use client";
 
-import { useState } from 'react';
-import { RegisterFormInputs } from '../schema';
+import { RegisterFormInputs } from "../types/schema";
+import { useAuthStore } from "../auth-store";
+import { useMutation } from "@tanstack/react-query";
 
 export function useRegister() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const { registration } = useAuthStore();
+
+  const mutation = useMutation({
+    mutationFn: registration,
+    onError: (error: Error) => {
+      console.error("Register failed:", error?.message);
+    },
+  });
 
   const handleSubmit = async (credentials: RegisterFormInputs) => {
-    setIsLoading(true);
-    try {
-      // Replace with actual API call, e.g., await registerApi(credentials)
-      console.log(credentials);
-    } catch (err) {
-      setError('Registration failed');
-      throw err;
-    } finally {
-      setIsLoading(false);
-    }
+    await mutation.mutateAsync(credentials);
   };
 
-  return { handleSubmit, isLoading, error };
+  return {
+    handleSubmit,
+    isLoading: mutation.isPending,
+    error: mutation.error?.message || null,
+  };
 }

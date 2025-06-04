@@ -1,21 +1,21 @@
-'use client'
+"use client";
 
-import { useMutation } from '@tanstack/react-query';
-import { LoginFormInputs } from '../schema';
-import { useAuthStore } from '../auth-store'
+import { useMutation } from "@tanstack/react-query";
+import { LoginFormInputs } from "../types/schema";
+import { useAuthStore } from "../auth-store";
 
 export function useLogin() {
-  const { login } = useAuthStore()
-  
+  const { login } = useAuthStore();
+
   const mutation = useMutation({
     mutationFn: login,
     onError: (error: Error) => {
-      console.error('Login failed:', error?.message);
+      console.error("Login failed:", error?.message);
     },
   });
 
   const handleSubmit = async (credentials: LoginFormInputs) => {
-      await mutation.mutateAsync(credentials)
+    await mutation.mutateAsync(credentials);
   };
 
   return {

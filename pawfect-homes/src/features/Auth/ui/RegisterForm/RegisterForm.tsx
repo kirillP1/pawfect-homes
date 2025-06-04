@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { FormCompound, InputCompound } from '@/shared/ui/form';
-import { Button } from '@/shared/ui/button';
-import { useRegisterForm } from '../../model/hooks/useRegisterForm'
-import { cn } from '@/shared/lib'
-import { RegisterFormInputs } from '../../model/schema'
+import { FormCompound, InputCompound } from "@/shared/ui/form";
+import { Button } from "@/shared/ui/button";
+import { useRegisterForm } from "../../model/hooks/useRegisterForm";
+import { cn } from "@/shared/lib";
+import { RegisterFormInputs } from "../../model/types/schema";
 
 interface IProps {
   submitRegister: (credentials: RegisterFormInputs) => Promise<void>;
@@ -14,14 +14,20 @@ interface IProps {
   onSuccess?: () => void;
 }
 
-export function RegisterForm({ submitRegister, isLoading, error, className, onSuccess }: IProps) {
+export function RegisterForm({
+  submitRegister,
+  isLoading,
+  error,
+  className,
+  onSuccess,
+}: IProps) {
   const { form, onSubmit } = useRegisterForm({ submitRegister, onSuccess });
 
   return (
     <FormCompound {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className={cn('flex flex-col gap-4', className)}
+        className={cn("flex flex-col gap-4", className)}
       >
         <FormCompound.Field
           control={form.control}
@@ -31,13 +37,10 @@ export function RegisterForm({ submitRegister, isLoading, error, className, onSu
               <FormCompound.Label>Username</FormCompound.Label>
               <FormCompound.Control>
                 <InputCompound.Group>
-                  <InputCompound
-                    placeholder="Username"
-                    {...field}
-                  />
+                  <InputCompound placeholder="Username" {...field} />
                 </InputCompound.Group>
               </FormCompound.Control>
-              <FormCompound.Message/>
+              <FormCompound.Message />
             </FormCompound.Item>
           )}
         />
@@ -50,14 +53,10 @@ export function RegisterForm({ submitRegister, isLoading, error, className, onSu
               <FormCompound.Label>Email</FormCompound.Label>
               <FormCompound.Control>
                 <InputCompound.Group>
-                  <InputCompound
-                    placeholder="Email"
-                    type="email"
-                    {...field}
-                  />
+                  <InputCompound placeholder="Email" type="email" {...field} />
                 </InputCompound.Group>
               </FormCompound.Control>
-              <FormCompound.Message/>
+              <FormCompound.Message />
             </FormCompound.Item>
           )}
         />
@@ -77,7 +76,7 @@ export function RegisterForm({ submitRegister, isLoading, error, className, onSu
                   />
                 </InputCompound.Group>
               </FormCompound.Control>
-              <FormCompound.Message/>
+              <FormCompound.Message />
             </FormCompound.Item>
           )}
         />
@@ -97,7 +96,7 @@ export function RegisterForm({ submitRegister, isLoading, error, className, onSu
                   />
                 </InputCompound.Group>
               </FormCompound.Control>
-              <FormCompound.Message/>
+              <FormCompound.Message />
             </FormCompound.Item>
           )}
         />
@@ -105,7 +104,7 @@ export function RegisterForm({ submitRegister, isLoading, error, className, onSu
         {error && <FormCompound.Message>{error}</FormCompound.Message>}
 
         <Button isLoading={isLoading}>
-          {isLoading ? 'Registering...' : 'Register'}
+          {isLoading ? "Registering..." : "Register"}
         </Button>
       </form>
     </FormCompound>

@@ -1,22 +1,25 @@
-'use client';
+"use client";
 
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { RegisterFormInputs, registerSchema } from '../schema';
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { RegisterFormInputs, registerSchema } from "../types/schema";
 
 interface UseRegisterFormProps {
   submitRegister: (credentials: RegisterFormInputs) => Promise<void>;
   onSuccess?: () => void;
 }
 
-export function useRegisterForm({ submitRegister, onSuccess }: UseRegisterFormProps) {
+export function useRegisterForm({
+  submitRegister,
+  onSuccess,
+}: UseRegisterFormProps) {
   const form = useForm<RegisterFormInputs>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      username: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
   });
 

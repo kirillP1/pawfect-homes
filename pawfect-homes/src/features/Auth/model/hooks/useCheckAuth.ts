@@ -1,28 +1,28 @@
-'use client'
+"use client";
 
-import { useQuery } from '@tanstack/react-query'
-import { useAuthStore } from '../auth-store'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useQuery } from "@tanstack/react-query";
+import { useAuthStore } from "../auth-store";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export const useCheckAuth = () => {
-  const router = useRouter()
-  const { checkAuth } = useAuthStore()
+  const router = useRouter();
+  const { checkAuth } = useAuthStore();
 
   const { isLoading, error } = useQuery({
-    queryKey: ['auth'],
+    queryKey: ["auth"],
     queryFn: async () => {
-      await checkAuth()
-      return null
+      await checkAuth();
+      return null;
     },
-    retry: false
-  })
+    retry: false,
+  });
 
   useEffect(() => {
     if (error) {
-      router.push('/')
+      router.push("/");
     }
-  }, [error, router])
+  }, [error, router]);
 
-  return { isLoading }
-}
+  return { isLoading };
+};

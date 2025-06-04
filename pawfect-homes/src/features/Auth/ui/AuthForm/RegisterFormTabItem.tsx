@@ -1,8 +1,20 @@
-import { useRegister } from '../../model/hooks/useRegister'
-import { RegisterForm } from '../RegisterForm/RegisterForm'
+"use client";
 
-export const RegisterFormTabItem = ()=>{
-	const { handleSubmit: submitRegister, isLoading: isRegisterLoading, error: registerError } = useRegister();
+import { useRegister } from "../../model/hooks/useRegister";
+import { RegisterForm } from "../RegisterForm/RegisterForm";
 
-	return <RegisterForm submitRegister={submitRegister} isLoading={isRegisterLoading} error={registerError}/>
-}
+export const RegisterFormTabItem = () => {
+  const {
+    handleSubmit: submitRegister,
+    isLoading: isRegisterLoading,
+    error: registerError,
+  } = useRegister();
+
+  return (
+    <RegisterForm
+      submitRegister={submitRegister}
+      isLoading={isRegisterLoading}
+      error={registerError}
+    />
+  );
+};

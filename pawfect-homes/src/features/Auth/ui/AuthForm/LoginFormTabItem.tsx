@@ -1,3 +1,5 @@
+'use client'
+
 import { useLogin } from '../../model/hooks/useLogin'
 import { LoginForm } from '../LoginForm/LoginForm'
 

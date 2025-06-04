@@ -1,5 +1,5 @@
-import { Schema, model } from 'mongoose';
-import { IPetSchema } from './PetEntity.types'
+import { Schema, model } from "mongoose";
+import { IPetSchema } from "./PetEntity.types";
 
 const PetSchema = new Schema<IPetSchema>(
   {
@@ -25,7 +25,7 @@ const PetSchema = new Schema<IPetSchema>(
     gender: {
       type: String,
       required: true,
-      enum: ['male', 'female'],
+      enum: ["male", "female"],
       trim: true,
     },
     adoptionFee: {
@@ -43,7 +43,7 @@ const PetSchema = new Schema<IPetSchema>(
     },
     shelterId: {
       type: Schema.Types.ObjectId,
-      ref: 'Shelter',
+      ref: "Shelter",
       required: true,
     },
     isAdopted: {
@@ -57,4 +57,4 @@ const PetSchema = new Schema<IPetSchema>(
 
 PetSchema.index({ shelterId: 1 });
 
-export const PetEntity = model<IPetSchema>('Pet', PetSchema);
+export const PetEntity = model<IPetSchema>("Pet", PetSchema);

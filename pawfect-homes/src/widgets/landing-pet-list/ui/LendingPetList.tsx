@@ -4,10 +4,13 @@ import { PetCard } from '@/entities/pet';
 import { IPet } from '@/shared/api'
 
 interface IProps {
-  pets: IPet[]
+  pets: IPet[] | undefined
 }
 
 export const LendingPetList = ({ pets }: IProps) => {
+
+  if(!pets) return 'There are no pets!'
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {pets.map((pet) => (

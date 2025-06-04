@@ -1,15 +1,13 @@
-import { ReactNode } from 'react';
-import { ButtonSize, ButtonType, ButtonVariant } from './types'
-import { buttonVariants } from './utils'
-import { Loader2 } from 'lucide-react'
+import { ReactNode } from "react";
+import { ButtonSize, ButtonType, ButtonVariant } from "./types";
+import { buttonVariants } from "./utils";
+import { Loader2 } from "lucide-react";
 
-
-interface ButtonProps {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   variant?: ButtonVariant;
   size?: ButtonSize;
   className?: string;
-  onClick?: () => void;
   type?: ButtonType;
   isLoading?: boolean;
 }
@@ -20,13 +18,16 @@ export const Button = ({
   children,
   variant,
   size,
-  className = '',
+  className = "",
   isLoading,
   ...props
 }: ButtonProps) => {
-
   return (
-    <button className={buttonVariants({ variant, size, className })} disabled={isLoading}  {...props}>
+    <button
+      className={buttonVariants({ variant, size, className })}
+      disabled={isLoading}
+      {...props}
+    >
       {isLoading && <Loader2 className="animate-spin" />}
       {children}
     </button>

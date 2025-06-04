@@ -1,10 +1,8 @@
-import { Types } from 'mongoose';
-import { Pet } from '../../../../core/models/pets.model';
-import { PetEntity } from '../../entities/PetEntity/PetEntity.schema';
-import { IPetSchema } from '../../entities/PetEntity/PetEntity.types'
-import { DbMapper } from '../DbMapper'
-
-
+import { Types } from "mongoose";
+import { Pet } from "../../../../core/models/pets.model";
+import { PetEntity } from "../../entities/PetEntity/PetEntity.schema";
+import { IPetSchema } from "../../entities/PetEntity/PetEntity.types";
+import { DbMapper } from "../DbMapper";
 
 export class PetMapper implements DbMapper<Pet, IPetSchema> {
   /**
@@ -14,8 +12,8 @@ export class PetMapper implements DbMapper<Pet, IPetSchema> {
    * @throws Error if entity is null or undefined
    */
   static toDomain(entity: IPetSchema): Pet {
-    if (!entity) throw new Error('Entity cannot be null or undefined');
-    if (!entity._id) throw new Error('Entity must have an _id');
+    if (!entity) throw new Error("Entity cannot be null or undefined");
+    if (!entity._id) throw new Error("Entity must have an _id");
 
     return new Pet(
       String(entity._id),
@@ -41,8 +39,9 @@ export class PetMapper implements DbMapper<Pet, IPetSchema> {
    * @throws Error if domain model is null or undefined
    */
   static toEntity(domain: Pet): IPetSchema {
-    if (!domain) throw new Error('Domain model cannot be null or undefined');
-    if (!domain.shelterId) throw new Error('ShelterId cannot be null or undefined');
+    if (!domain) throw new Error("Domain model cannot be null or undefined");
+    if (!domain.shelterId)
+      throw new Error("ShelterId cannot be null or undefined");
 
     return new PetEntity({
       _id: domain.id ? new Types.ObjectId(domain.id) : undefined,
@@ -57,7 +56,7 @@ export class PetMapper implements DbMapper<Pet, IPetSchema> {
       updatedAt: domain.updatedAt,
       breed: domain.breed,
       imageUrl: domain.imageUrl,
-      description: domain.description
+      description: domain.description,
     });
   }
 

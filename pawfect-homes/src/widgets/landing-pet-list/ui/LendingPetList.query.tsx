@@ -8,7 +8,8 @@ export const LendingPetListQuery = () => {
   const { data } = useSuspenseQuery({
     queryKey: ['pets'],
     queryFn: getPets,
-    staleTime: 1000 * 60 * 5, 
+    staleTime: 1000 * 60 * 5,
+    retry: false
   });
 
   return <LendingPetList pets={data} />;

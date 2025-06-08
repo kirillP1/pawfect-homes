@@ -7,9 +7,13 @@ import ChatMessagesList from "../ChatMessagesList/ChatMessagesList";
 import ChatUsernameInput from "../ChatUsernameInput/ChatUsernameInput";
 import ChatErrorFallback from "../ChatErrorFallback/ChatErrorFallback";
 
-export const Chat = () => {
+interface IProps {
+  chatRoomId?: string;
+}
+
+export const Chat = ({ chatRoomId }: IProps) => {
   const { username, setUsername, connectionStatus, messages, sendMessage } =
-    useChat();
+    useChat({ chatRoomId });
 
   return (
     <AsyncDataWrapper
@@ -21,7 +25,7 @@ export const Chat = () => {
         />
       )}
     >
-      <div className="flex flex-col h-screen max-w-2xl mx-auto p-4 bg-gray-100">
+      <div className="flex flex-col h-[100%] max-w-2xl mx-auto p-4 bg-gray-100">
         <div className="mb-4">
           <ChatUsernameInput
             username={username}

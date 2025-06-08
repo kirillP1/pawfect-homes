@@ -1,9 +1,8 @@
-import Image from 'next/image';
-import { usePetCardContext } from '../modal/usePetCardContext'
-
+import Image from "next/image";
+import { usePetCardContext } from "../../model/usePetCardContext";
 
 export const PetCardImage = () => {
-  const { pet } = usePetCardContext()
+  const { pet } = usePetCardContext();
 
   return (
     <Image

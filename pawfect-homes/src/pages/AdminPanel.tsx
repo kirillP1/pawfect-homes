@@ -1,12 +1,5 @@
-import { Chat } from "@/features/Chat";
-
 const AdminPanel = () => {
-  return (
-    <div>
-      You are on admin panel!
-      <Chat />
-    </div>
-  );
+  return <div>You are on admin panel!</div>;
 };
 
 export default AdminPanel;

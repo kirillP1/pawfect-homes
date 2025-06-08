@@ -1,7 +1,7 @@
-import { usePetCardContext } from '../modal/usePetCardContext'
+import { usePetCardContext } from "../../model/usePetCardContext";
 
 export const PetCardInfo = () => {
-  const { pet } = usePetCardContext()
+  const { pet } = usePetCardContext();
 
   return (
     <>

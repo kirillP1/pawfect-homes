@@ -5,7 +5,13 @@ import { useChatMessages } from "./useChatMessages";
 import { useChatUsername } from "./useChatUsername";
 import { useSendChatMessage } from "./useSendChatMessage";
 
-export const useChat = () => {
+interface IParams {
+  chatRoomId?: string;
+}
+
+export const useChat = ({ chatRoomId }: IParams) => {
+  if (chatRoomId) console.log("chatRoomId", chatRoomId);
+
   const { wsRef, connectionStatus } = useWebSocket("ws://localhost:5001");
   const { messages } = useChatMessages(wsRef);
   const { username, setUsername } = useChatUsername();
